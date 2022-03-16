@@ -42,4 +42,14 @@ public class IngredientServiceImpl implements IngredientService {
 		return ingredientDao.delete(uid);
 	}
 
+	@Transactional
+	@Override
+	public Ingredient add(String uid, int qty) {
+		Ingredient entity = ingredientDao.find(uid);
+		int currQty = entity.getQty();
+		currQty+= qty;
+		entity.setQty(currQty);
+		return entity;
+	}
+
 }

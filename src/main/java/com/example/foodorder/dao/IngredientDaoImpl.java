@@ -39,4 +39,9 @@ public class IngredientDaoImpl implements IngredientDao {
 		return entity;
 	}
 
+	@Override
+	public Ingredient find(String uid) {
+		return em.find(Ingredient.class, uid);
+	}
+
 }

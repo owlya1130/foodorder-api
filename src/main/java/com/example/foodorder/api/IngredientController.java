@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -42,5 +43,10 @@ public class IngredientController {
 	@DeleteMapping("{uid}")
 	public Ingredient delete(@PathVariable String uid) {
 		return ingredientService.delete(uid);
+	}
+	
+	@PatchMapping("{uid}/add/{qty}")
+	public Ingredient add(@PathVariable String uid, @PathVariable int qty) {
+		return ingredientService.add(uid, qty);
 	}
 }

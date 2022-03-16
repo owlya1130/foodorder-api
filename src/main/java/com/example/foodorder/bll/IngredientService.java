@@ -9,4 +9,5 @@ public interface IngredientService {
 	public Ingredient save(Ingredient entity);
 	public Ingredient update(Ingredient entity);
 	public Ingredient delete(String uid);
+	public Ingredient add(String uid, int qty);
 }
