@@ -11,7 +11,7 @@ import com.example.foodorder.entity.Ingredient;
 
 @Repository
 public class IngredientDaoImpl implements IngredientDao {
-	
+
 	@Autowired
 	private EntityManager em;
 
@@ -42,6 +42,12 @@ public class IngredientDaoImpl implements IngredientDao {
 	@Override
 	public Ingredient find(String uid) {
 		return em.find(Ingredient.class, uid);
+	}
+
+	@Override
+	public List<Ingredient> findPackageIngredient(String uid) {
+		return em.createQuery("from Ingredient i where i.packageByUID = :uid", Ingredient.class)
+				.setParameter("uid", uid).getResultList();
 	}
 
 }

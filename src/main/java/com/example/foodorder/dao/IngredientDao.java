@@ -11,5 +11,6 @@ public interface IngredientDao {
 	public Ingredient update(Ingredient entity);
 	public Ingredient delete(String uid);
 	public Ingredient find(String uid);
+	public List<Ingredient> findPackageIngredient(String uid);
 	
 }

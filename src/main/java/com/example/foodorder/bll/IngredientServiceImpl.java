@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 
 import com.example.foodorder.dao.IngredientDao;
 import com.example.foodorder.entity.Ingredient;
+import com.example.foodorder.entity.Ingredient4ConsumeBO;
+import com.example.foodorder.entity.Ingredient4ConsumeBO.ConsumeType;
+import com.example.foodorder.entity.Ingredient4RestockBO;
 import com.example.foodorder.util.UUIDHelper;
 
 @Service
@@ -44,12 +47,40 @@ public class IngredientServiceImpl implements IngredientService {
 
 	@Transactional
 	@Override
-	public Ingredient add(String uid, int qty) {
-		Ingredient entity = ingredientDao.find(uid);
+	public Ingredient restock(Ingredient4RestockBO bo) {		
+		Ingredient entity = ingredientDao.find(bo.getUid());
 		int currQty = entity.getQty();
-		currQty+= qty;
+		currQty += bo.getQty();
 		entity.setQty(currQty);
 		return entity;
+	}
+
+	@Transactional
+	@Override
+	public Ingredient consume(Ingredient4ConsumeBO bo) {
+		Ingredient entity4consume = ingredientDao.find(bo.getUid());
+		int currQty = entity4consume.getQty();
+		currQty -= bo.getQty();
+		entity4consume.setQty(currQty);
+		
+		if(bo.getAction() == ConsumeType.Packaged) {
+			List<Ingredient> entity4packagedList = ingredientDao.findPackageIngredient(bo.getUid());
+			if(entity4packagedList.size() > 0) {
+				Ingredient entity4packaged = entity4packagedList.get(0);
+				int totalPackagedQty = bo.getQty() * bo.getPackagedQty();
+				int entity4packagedTotalQty = entity4packaged.getQty() + totalPackagedQty;
+				entity4packaged.setQty(entity4packagedTotalQty);
+			} else {
+				System.err.println("找不到分裝食材");
+			}
+		}
+		
+		return entity4consume;
+	}
+
+	@Override
+	public List<Ingredient> findPackageList(String uid) {
+		return ingredientDao.findPackageIngredient(uid);
 	}
 
 }

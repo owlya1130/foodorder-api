@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.foodorder.bll.IngredientService;
 import com.example.foodorder.entity.Ingredient;
+import com.example.foodorder.entity.Ingredient4ConsumeBO;
+import com.example.foodorder.entity.Ingredient4RestockBO;
 
 @CrossOrigin
 @RestController
@@ -45,8 +47,18 @@ public class IngredientController {
 		return ingredientService.delete(uid);
 	}
 	
-	@PatchMapping("{uid}/add/{qty}")
-	public Ingredient add(@PathVariable String uid, @PathVariable int qty) {
-		return ingredientService.add(uid, qty);
+	@PatchMapping("restock")
+	public Ingredient restock(@RequestBody Ingredient4RestockBO bo) {
+		return ingredientService.restock(bo);
+	}
+	
+	@GetMapping("{uid}/packagelist")
+	public List<Ingredient> findPackageList(@PathVariable String uid) {
+		return ingredientService.findPackageList(uid);
+	}
+	
+	@PatchMapping("consume")
+	public Ingredient cousume(@RequestBody Ingredient4ConsumeBO bo) {
+		return ingredientService.consume(bo);
 	}
 }
