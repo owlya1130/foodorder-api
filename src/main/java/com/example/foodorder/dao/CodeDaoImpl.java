@@ -16,8 +16,9 @@ public class CodeDaoImpl implements CodeDao {
 	private EntityManager em;
 
 	@Override
-	public List<Code> findAll() {
-		return em.createQuery("from Code", Code.class).getResultList();
+	public List<Code> findAll(String typeid) {
+		return em.createQuery("from Code c where c.type.id = :id", Code.class)
+				.setParameter("id", typeid).getResultList();
 	}
 
 	@Override

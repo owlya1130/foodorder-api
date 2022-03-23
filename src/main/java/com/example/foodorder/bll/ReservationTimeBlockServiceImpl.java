@@ -14,7 +14,8 @@ import com.example.foodorder.entity.CodeType;
 import com.example.foodorder.util.UUIDHelper;
 
 @Service
-public class MealClassificationServiceImpl implements MealClassificationService {
+public class ReservationTimeBlockServiceImpl implements ReservationTimeBlockService {
+
 
 	@Autowired
 	private CodeDao codeDao;
@@ -24,7 +25,7 @@ public class MealClassificationServiceImpl implements MealClassificationService 
 	
 	@Override
 	public List<Code> findAll() {
-		return codeDao.findAll("meal-classification");
+		return codeDao.findAll("reservation-time-block");
 	}
 
 	@Transactional
@@ -33,9 +34,9 @@ public class MealClassificationServiceImpl implements MealClassificationService 
 		String uid = UUIDHelper.getUUID();
 		entity.setUid(uid);
 		
-		List<CodeType> codeTypes = this.codeTypeDao.find("meal-classification");
+		List<CodeType> codeTypes = this.codeTypeDao.find("reservation-time-block");
 		if(codeTypes.size() == 0) {
-			System.err.println("CodeType[meal-classification]未設定");
+			System.err.println("CodeType[reservation-time-block]未設定");
 			return null;
 		} else {
 			entity.setType(codeTypes.get(0));
@@ -47,12 +48,6 @@ public class MealClassificationServiceImpl implements MealClassificationService 
 	@Override
 	public Code update(Code entity) {
 		return codeDao.update(entity);
-	}
-
-	@Transactional
-	@Override
-	public Code delete(String uid) {
-		return codeDao.delete(uid);
 	}
 
 }
