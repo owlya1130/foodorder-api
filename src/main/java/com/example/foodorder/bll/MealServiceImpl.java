@@ -51,4 +51,9 @@ public class MealServiceImpl implements MealService {
 		return mealDao.delete(uid);
 	}
 
+	@Override
+	public Meal find(String uid) {
+		return  mealDao.find(uid);
+	}
+
 }

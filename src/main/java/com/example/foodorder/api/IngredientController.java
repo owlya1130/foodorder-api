@@ -18,6 +18,7 @@ import com.example.foodorder.bll.IngredientService;
 import com.example.foodorder.entity.Ingredient;
 import com.example.foodorder.entity.Ingredient4ConsumeBO;
 import com.example.foodorder.entity.Ingredient4RestockBO;
+import com.example.foodorder.util.UUIDHelper;
 
 @CrossOrigin
 @RestController
@@ -49,7 +50,7 @@ public class IngredientController {
 	
 	@PatchMapping("restock")
 	public Ingredient restock(@RequestBody Ingredient4RestockBO bo) {
-		return ingredientService.restock(bo);
+		return ingredientService.restock(bo, UUIDHelper.getBatchNo());
 	}
 	
 	@GetMapping("{uid}/packagelist")
@@ -58,7 +59,7 @@ public class IngredientController {
 	}
 	
 	@PatchMapping("consume")
-	public Ingredient cousume(@RequestBody Ingredient4ConsumeBO bo) {
-		return ingredientService.consume(bo);
+	public Ingredient cousume(@RequestBody Ingredient4ConsumeBO bo) throws Exception {
+		return ingredientService.consume(bo, UUIDHelper.getBatchNo());
 	}
 }

@@ -4,6 +4,7 @@ public class Ingredient4RestockBO {
 	
 	private String uid;
 	private int qty;
+	private String comment;
 	
 	public String getUid() {
 		return uid;
@@ -16,6 +17,12 @@ public class Ingredient4RestockBO {
 	}
 	public void setQty(int qty) {
 		this.qty = qty;
+	}
+	public String getComment() {
+		return comment;
+	}
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 	
 }

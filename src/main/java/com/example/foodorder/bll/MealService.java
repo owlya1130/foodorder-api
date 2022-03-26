@@ -9,4 +9,5 @@ public interface MealService {
 	public Meal save(Meal entity);
 	public Meal update(Meal entity);
 	public Meal delete(String uid);
+	public Meal find(String uid);
 }

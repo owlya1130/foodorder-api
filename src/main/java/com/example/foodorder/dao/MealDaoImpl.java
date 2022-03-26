@@ -36,9 +36,14 @@ public class MealDaoImpl implements MealDao {
 
 	@Override
 	public Meal delete(String uid) {
-		Meal entity = em.find(Meal.class, uid);
+		Meal entity = find(uid);
 		em.remove(entity);
 		return entity;
+	}
+
+	@Override
+	public Meal find(String uid) {
+		return em.find(Meal.class, uid);
 	}
 
 }

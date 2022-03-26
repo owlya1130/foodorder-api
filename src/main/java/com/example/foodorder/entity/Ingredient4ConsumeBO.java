@@ -4,13 +4,15 @@ public class Ingredient4ConsumeBO {
 	
 	public enum ConsumeType {
 		Expired,
-		Packaged
+		Packaged,
+		Sold
 	}
 	
 	private ConsumeType action;	
 	private String uid;
 	private int Qty;
 	private int packagedQty;
+	private String comment;
 	
 	public ConsumeType getAction() {
 		return action;
@@ -36,7 +38,10 @@ public class Ingredient4ConsumeBO {
 	public void setPackagedQty(int packagedQty) {
 		this.packagedQty = packagedQty;
 	}
-	
-	
-	
+	public String getComment() {
+		return comment;
+	}
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
 }

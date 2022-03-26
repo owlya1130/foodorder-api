@@ -11,7 +11,7 @@ public interface IngredientService {
 	public Ingredient save(Ingredient entity);
 	public Ingredient update(Ingredient entity);
 	public Ingredient delete(String uid);
-	public Ingredient restock(Ingredient4RestockBO bo);
-	public Ingredient consume(Ingredient4ConsumeBO bo);
+	public Ingredient restock(Ingredient4RestockBO bo, String batchno);
+	public Ingredient consume(Ingredient4ConsumeBO bo, String batchno) throws Exception;
 	public List<Ingredient> findPackageList(String uid);
 }
