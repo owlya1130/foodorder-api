@@ -1,0 +1,22 @@
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: debug
+        type:
+          descriptor:
+            sql: trace
+spring:
+  datasource:
+    password: 1qaz2wsx
+    url: jdbc:mysql://localhost:3306/foodorder
+    username: root
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+  webflux:
+    base-path: /api
+server:
+  port: 8080
