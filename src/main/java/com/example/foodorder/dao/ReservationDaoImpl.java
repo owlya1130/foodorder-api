@@ -9,7 +9,7 @@ import javax.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.example.foodorder.entity.Reservation;
+import com.example.foodorder.entity.order.Reservation;
 
 @Repository
 public class ReservationDaoImpl implements ReservationDao {

@@ -7,7 +7,7 @@ import javax.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.example.foodorder.entity.OrderLog;
+import com.example.foodorder.entity.order.OrderLog;
 
 @Repository
 public class OrderLogDaoImpl implements OrderLogDao {

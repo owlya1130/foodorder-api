@@ -9,9 +9,10 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.foodorder.bll.order.ReservationTimeBlockService;
 import com.example.foodorder.dao.ReservationDao;
-import com.example.foodorder.entity.Code;
-import com.example.foodorder.entity.Reservation;
+import com.example.foodorder.entity.code.Code;
+import com.example.foodorder.entity.order.Reservation;
 import com.example.foodorder.util.DateHelper;
 
 @Service

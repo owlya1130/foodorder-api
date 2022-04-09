@@ -3,7 +3,7 @@ package com.example.foodorder.dao;
 import java.util.Date;
 import java.util.List;
 
-import com.example.foodorder.entity.Reservation;
+import com.example.foodorder.entity.order.Reservation;
 
 public interface ReservationDao {
 	public List<Reservation> findAll(Date startDateTime, Date endDateTime, String tableUid);

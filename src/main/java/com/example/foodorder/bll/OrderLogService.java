@@ -2,7 +2,7 @@ package com.example.foodorder.bll;
 
 import java.util.List;
 
-import com.example.foodorder.entity.OrderLog;
+import com.example.foodorder.entity.order.OrderLog;
 
 public interface OrderLogService {
 	public List<OrderLog> findAll();

@@ -3,7 +3,7 @@ package com.example.foodorder.bll;
 import java.util.Date;
 import java.util.List;
 
-import com.example.foodorder.entity.Reservation;
+import com.example.foodorder.entity.order.Reservation;
 
 public interface ReservationService {
 	public List<Reservation> findAll(Date startDate, Date endDate);
