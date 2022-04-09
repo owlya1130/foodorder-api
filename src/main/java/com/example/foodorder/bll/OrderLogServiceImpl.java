@@ -38,6 +38,13 @@ public class OrderLogServiceImpl implements OrderLogService {
 	@Transactional
 	@Override
 	public OrderLog save(OrderLog entity) throws Exception {
+		List<OrderLog> orderLogs = findAll();
+		for(OrderLog orderLog: orderLogs) {
+			if(entity.getTableUid().equals(orderLog.getTableUid())) {
+				throw new RuntimeException("餐桌用餐中");
+			}
+		}
+		
 		String batchno = UUIDHelper.getBatchNo();
 		String uid = UUIDHelper.getUUID();
 		entity.setUid(uid);
