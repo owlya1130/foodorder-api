@@ -43,7 +43,7 @@ create table IngredientLog (
 	uid		int unsigned not null primary key auto_increment,
     batchNo char(19) not null,
     time	TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    action	ENUM('Restock', 'Expired', 'PackagedFrom', 'PackagedTo', 'Sold') NOT NULL,
+    action	ENUM('Restock', 'Expired', 'PackagedFrom', 'PackagedTo', 'Sold', 'Consume') NOT NULL,
     qty		SMALLINT not null,
     comment varchar(100),
     ingredientQuantityUid	int unsigned,

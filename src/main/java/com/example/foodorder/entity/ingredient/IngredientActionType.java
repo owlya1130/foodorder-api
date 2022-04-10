@@ -5,7 +5,8 @@ public enum IngredientActionType {
 	Expired(1, "Expired"),
 	PackagedFrom(2, "PackagedFrom"),
 	PackagedTo(3, "PackagedTo"),
-	Sold(4, "Sold");
+	Sold(4, "Sold"),
+	Consume(5, "Consume");
 	
 	private int id;
     private String name;
